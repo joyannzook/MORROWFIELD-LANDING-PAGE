@@ -20,8 +20,8 @@ application.
 | Item | State |
 |---|---|
 | Static website implemented | ✅ |
-| Responsive (mobile / tablet / desktop) | ✅ |
-| Accessibility pass (semantic HTML, keyboard, focus, contrast) | ✅ |
+| Responsive layout implementation | ✅ Implemented; visual verification pending |
+| Accessibility features (semantic HTML, keyboard, focus, contrast) | ⚠️ Implemented in source; manual verification pending |
 | Netlify configuration supplied | ✅ |
 | Render configuration supplied | ✅ |
 | Google Form URL configured | ❌ **Blocker** — placeholder in `assets/js/main.js` |
@@ -29,6 +29,8 @@ application.
 | Email / WhatsApp follow-up verified | ❌ **Blocker** — external, not part of this repo |
 | Privacy / Terms / Disclosures pages | ❌ **Awaiting approved content** |
 | Live deployment verified | ❌ Pending hosting account connection |
+
+Responsive behavior and accessibility support are implemented in the source, but they have **not yet been independently verified** across desktop, tablet, and mobile or through a complete keyboard/contrast audit.
 
 A successful local preview is **not** a successful deployment.
 A successful deployment is **not** a verified automation.
@@ -203,7 +205,7 @@ Do **not** modify the existing Activepieces flow under this ticket.
 | Lending disclosures | Operator / legal | Interest rates, APR, fees, repayment, eligibility |
 | Company registration / licensing statements | Operator / legal | Must not be invented |
 | Production domain | Operator | Needed for `og:url` and canonical metadata |
-| Canonical repository name | Operator | `Morrowfield-landing-website` exists and is empty; `MORROWFIELD-LANDING-PAGE` does not. Resolve before pushing. |
+| Canonical repository | Resolved | `joyannzook/MORROWFIELD-LANDING-PAGE` is the canonical landing-site repository. Keep it separate from `joyannzook/MORROWFIELD`. |
 
 ---
 
