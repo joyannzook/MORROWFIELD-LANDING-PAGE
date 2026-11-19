@@ -1,420 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Morrowfield Community Finance — Community-Supported Lending</title>
-<meta name="description" content="Morrowfield Community Finance is a United States lending platform built on a community-supported and company-funded model. Explore the Small, Medium and Large loan categories and express your interest." />
-<meta name="theme-color" content="#0A1F3C" />
+  <title>Morrowfield Community Finance — Community-Supported Lending</title>
+  <meta name="description" content="Morrowfield Community Finance is a United States lending platform built on a community-supported and company-funded model. Explore the Small, Medium and Large loan categories and express your interest." />
+  <meta name="theme-color" content="#0A1F3C" />
 
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Morrowfield Community Finance" />
-<meta property="og:title" content="Morrowfield Community Finance" />
-<meta property="og:description" content="A more considered approach to borrowing. Explore the Small, Medium and Large loan categories and express your interest." />
-<meta name="twitter:card" content="summary" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Morrowfield Community Finance" />
+  <meta property="og:title" content="Morrowfield Community Finance" />
+  <meta property="og:description" content="A more considered approach to borrowing. Explore the Small, Medium and Large loan categories and express your interest." />
+  <meta name="twitter:card" content="summary" />
 
-<!--
-METADATA NOTE:
-og:url and og:image are deliberately omitted. Add them only once an approved
-production domain and an approved brand asset exist. Do not invent either.
--->
+  <!--
+    METADATA NOTE:
+    og:url and og:image are deliberately omitted. Add them only once an approved
+    production domain and an approved brand asset exist. Do not invent either.
+  -->
 
-<link rel="stylesheet" href="assets/css/styles.css" />
-<script src="assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="assets/js/main.js" defer></script>
 
-<noscript>
-<style>
-/* Keep primary navigation usable when JavaScript is unavailable. */
-@media (max-width: 900px) {
-.primary-nav {
-position: static !important;
-display: flex !important;
-border-bottom: 1px solid #E3E7ED;
-box-shadow: none;
-padding: 0 0 1rem;
-}
-.nav-toggle { display: none !important; }
-}
-</style>
-</noscript>
+  <noscript>
+    <style>
+      /* Keep primary navigation usable when JavaScript is unavailable. */
+      @media (max-width: 900px) {
+        .primary-nav {
+          position: static !important;
+          display: flex !important;
+          border-bottom: 1px solid #E3E7ED;
+          box-shadow: none;
+          padding: 0 0 1rem;
+        }
+        .nav-toggle { display: none !important; }
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
-<a class="skip-link" href="#main">Skip to main content</a>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- ============================ HEADER ============================ -->
-<header class="site-header">
-<div class="container header__inner">
-<a class="brand" href="#home" aria-label="Morrowfield Community Finance — home">
-<svg class="brand__mark" viewBox="0 0 32 32" width="34" height="34" aria-hidden="true" focusable="false">
-<rect x="0.5" y="0.5" width="31" height="31" rx="2.5" fill="#0A1F3C" />
-<rect x="8" y="18" width="4" height="7" fill="#FFFFFF" opacity="0.55" />
-<rect x="14" y="13" width="4" height="12" fill="#FFFFFF" opacity="0.8" />
-<rect x="20" y="8" width="4" height="17" fill="#FFFFFF" />
-</svg>
-<span class="brand__text">
-<span class="brand__name">Morrowfield</span>
-<span class="brand__sub">Community Finance</span>
-</span>
-</a>
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="#home" aria-label="Morrowfield Community Finance — home">
+        <svg class="brand__mark" viewBox="0 0 32 32" width="34" height="34" aria-hidden="true" focusable="false">
+          <rect x="0.5" y="0.5" width="31" height="31" rx="2.5" fill="#0A1F3C" />
+          <rect x="8" y="18" width="4" height="7" fill="#FFFFFF" opacity="0.55" />
+          <rect x="14" y="13" width="4" height="12" fill="#FFFFFF" opacity="0.8" />
+          <rect x="20" y="8" width="4" height="17" fill="#FFFFFF" />
+        </svg>
+        <span class="brand__text">
+          <span class="brand__name">Morrowfield</span>
+          <span class="brand__sub">Community Finance</span>
+        </span>
+      </a>
 
-<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
-<span class="nav-toggle__bar"></span>
-<span class="nav-toggle__bar"></span>
-<span class="nav-toggle__bar"></span>
-</button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
 
-<nav class="primary-nav" id="primary-nav" aria-label="Primary">
-<ul class="primary-nav__list">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#loan-options">Loan Options</a></li>
-<li><a href="#how-it-works">How It Works</a></li>
-<li><a href="#faq">FAQ</a></li>
-</ul>
-<a class="btn btn--primary btn--sm primary-nav__cta" href="#express-interest" data-express-interest>Express Interest</a>
-</nav>
-</div>
-</header>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="primary-nav__list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#loan-options">Loan Options</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a class="btn btn--primary btn--sm primary-nav__cta" href="#express-interest" data-express-interest>Express Interest</a>
+      </nav>
+    </div>
+  </header>
 
-<main id="main">
+  <main id="main">
 
-<!-- ============================= HERO ============================= -->
-<section class="hero" id="home" aria-labelledby="hero-title">
-<div class="container hero__inner">
-<div class="hero__copy">
-<p class="eyebrow">Community-supported lending</p>
-<h1 id="hero-title">A more considered approach to borrowing.</h1>
-<p class="hero__lede">
-Morrowfield Community Finance is a United States lending platform built around a
-community-supported and company-funded model. Explore the three loan categories,
-then start a conversation about the financing that fits your circumstances.
-</p>
-<div class="hero__actions">
-<a class="btn btn--primary" href="#express-interest" data-express-interest>Express Interest</a>
-<a class="btn btn--ghost" href="#loan-options">Explore loan options</a>
-</div>
-<p class="hero__note">
-Loan categories shown are indicative ranges only. They are not a guarantee of
-eligibility, approval, availability or funding.
-</p>
-</div>
+    <!-- ============================= HERO ============================= -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Community-supported lending</p>
+          <h1 id="hero-title">A more considered approach to borrowing.</h1>
+          <p class="hero__lede">
+            Morrowfield Community Finance is a United States lending platform built around a
+            community-supported and company-funded model. Explore the three loan categories,
+            then start a conversation about the financing that fits your circumstances.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#express-interest" data-express-interest>Express Interest</a>
+            <a class="btn btn--ghost" href="#loan-options">Explore loan options</a>
+          </div>
+          <p class="hero__note">
+            Loan categories shown are indicative ranges only. They are not a guarantee of
+            eligibility, approval, availability or funding.
+          </p>
+        </div>
 
-<aside class="hero__panel" aria-label="Loan categories at a glance">
-<p class="panel__label">Loan categories</p>
-<ul class="tier-list">
-<li>
-<span class="tier__name">Small</span>
-<span class="tier__range">$1,000–$5,000</span>
-</li>
-<li>
-<span class="tier__name">Medium</span>
-<span class="tier__range">$10,000–$20,000</span>
-</li>
-<li>
-<span class="tier__name">Large</span>
-<span class="tier__range">$25,000–$100,000</span>
-</li>
-</ul>
-<p class="panel__foot">
-Amount ranges only. Terms, eligibility and availability are confirmed through the
-official process.
-</p>
-</aside>
-</div>
-</section>
+        <aside class="hero__panel" aria-label="Loan categories at a glance">
+          <p class="panel__label">Loan categories</p>
+          <ul class="tier-list">
+            <li>
+              <span class="tier__name">Small</span>
+              <span class="tier__range">$1,000–$5,000</span>
+            </li>
+            <li>
+              <span class="tier__name">Medium</span>
+              <span class="tier__range">$10,000–$20,000</span>
+            </li>
+            <li>
+              <span class="tier__name">Large</span>
+              <span class="tier__range">$25,000–$100,000</span>
+            </li>
+          </ul>
+          <p class="panel__foot">
+            Amount ranges only. Terms, eligibility and availability are confirmed through the
+            official process.
+          </p>
+        </aside>
+      </div>
+    </section>
 
-<!-- ============================= ABOUT ============================ -->
-<section class="section" id="about" aria-labelledby="about-title">
-<div class="container about">
-<div class="about__intro">
-<p class="eyebrow">About Morrowfield</p>
-<h2 id="about-title">Financing shaped by community, delivered with care.</h2>
-</div>
-<div class="about__body">
-<p>
-Morrowfield Community Finance is a United States lending platform. Its model brings
-together community support and company funding, with lending organised around three
-clearly defined amount categories rather than a single open-ended range.
-</p>
-<p>
-The process is intentionally conversational. Rather than publishing fixed rates and
-repayment terms on a website, Morrowfield discusses proposed terms directly with each
-customer through an approved communication channel. Any formal offer is issued for
-review before it is accepted.
-</p>
-<!--
-CONTENT PLACEHOLDER — APPROVED MISSION STATEMENT
-Insert the operator-approved company description or mission statement here once it
-has been approved. Do not publish invented corporate history, founding dates,
-office locations, licensing details or leadership biographies.
--->
-</div>
-</div>
-</section>
+    <!-- ============================= ABOUT ============================ -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <div class="about__intro">
+          <p class="eyebrow">About Morrowfield</p>
+          <h2 id="about-title">Financing shaped by community, delivered with care.</h2>
+        </div>
+        <div class="about__body">
+          <p>
+            Morrowfield Community Finance is a United States lending platform. Its model brings
+            together community support and company funding, with lending organised around three
+            clearly defined amount categories rather than a single open-ended range.
+          </p>
+          <p>
+            The process is intentionally conversational. Rather than publishing fixed rates and
+            repayment terms on a website, Morrowfield discusses proposed terms directly with each
+            customer through an approved communication channel. Any formal offer is issued for
+            review before it is accepted.
+          </p>
+          <!--
+            CONTENT PLACEHOLDER — APPROVED MISSION STATEMENT
+            Insert the operator-approved company description or mission statement here once it
+            has been approved. Do not publish invented corporate history, founding dates,
+            office locations, licensing details or leadership biographies.
+          -->
+        </div>
+      </div>
+    </section>
 
-<!-- ========================= LOAN OPTIONS ========================= -->
-<section class="section section--alt" id="loan-options" aria-labelledby="loans-title">
-<div class="container">
-<header class="section__head">
-<p class="eyebrow">Loan options</p>
-<h2 id="loans-title">Three loan categories</h2>
-<p class="section__lede">
-Each category defines an indicative amount range. Interest rates, APR, fees, repayment
-periods and eligibility criteria are not published on this website and are confirmed
-through the official process.
-</p>
-</header>
+    <!-- ========================= LOAN OPTIONS ========================= -->
+    <section class="section section--alt" id="loan-options" aria-labelledby="loans-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Loan options</p>
+          <h2 id="loans-title">Three loan categories</h2>
+          <p class="section__lede">
+            Each category defines an indicative amount range. Interest rates, APR, fees, repayment
+            periods and eligibility criteria are not published on this website and are confirmed
+            through the official process.
+          </p>
+        </header>
 
-<ul class="cards">
-<li class="card">
-<p class="card__tier">Small</p>
-<p class="card__amount">$1,000–$5,000</p>
-<p class="card__desc">
-For smaller financing needs within the entry amount range.
-</p>
-<a class="card__link" href="#express-interest" data-express-interest
-aria-label="Express interest in a Small loan">
-Express interest <span aria-hidden="true">&rarr;</span>
-</a>
-</li>
+        <ul class="cards">
+          <li class="card">
+            <p class="card__tier">Small</p>
+            <p class="card__amount">$1,000–$5,000</p>
+            <p class="card__desc">
+              For smaller financing needs within the entry amount range.
+            </p>
+            <a class="card__link" href="#express-interest" data-express-interest
+               aria-label="Express interest in a Small loan">
+              Express interest <span aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
 
-<li class="card">
-<p class="card__tier">Medium</p>
-<p class="card__amount">$10,000–$20,000</p>
-<p class="card__desc">
-For mid-range financing needs within the approved amount range.
-</p>
-<a class="card__link" href="#express-interest" data-express-interest
-aria-label="Express interest in a Medium loan">
-Express interest <span aria-hidden="true">&rarr;</span>
-</a>
-</li>
+          <li class="card">
+            <p class="card__tier">Medium</p>
+            <p class="card__amount">$10,000–$20,000</p>
+            <p class="card__desc">
+              For mid-range financing needs within the approved amount range.
+            </p>
+            <a class="card__link" href="#express-interest" data-express-interest
+               aria-label="Express interest in a Medium loan">
+              Express interest <span aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
 
-<li class="card">
-<p class="card__tier">Large</p>
-<p class="card__amount">$25,000–$100,000</p>
-<p class="card__desc">
-For larger financing needs within the approved amount range.
-</p>
-<a class="card__link" href="#express-interest" data-express-interest
-aria-label="Express interest in a Large loan">
-Express interest <span aria-hidden="true">&rarr;</span>
-</a>
-</li>
-</ul>
+          <li class="card">
+            <p class="card__tier">Large</p>
+            <p class="card__amount">$25,000–$100,000</p>
+            <p class="card__desc">
+              For larger financing needs within the approved amount range.
+            </p>
+            <a class="card__link" href="#express-interest" data-express-interest
+               aria-label="Express interest in a Large loan">
+              Express interest <span aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+        </ul>
 
-<p class="disclaimer">
-Amounts are indicative category ranges only. They are not an offer, an approval, a
-commitment to lend, or a guarantee of availability or funding. Any offer would be made
-separately, in writing, following the official process.
-</p>
-</div>
-</section>
+        <p class="disclaimer">
+          Amounts are indicative category ranges only. They are not an offer, an approval, a
+          commitment to lend, or a guarantee of availability or funding. Any offer would be made
+          separately, in writing, following the official process.
+        </p>
+      </div>
+    </section>
 
-<!-- ========================== HOW IT WORKS ======================== -->
-<section class="section" id="how-it-works" aria-labelledby="how-title">
-<div class="container">
-<header class="section__head">
-<p class="eyebrow">How it works</p>
-<h2 id="how-title">A straightforward process</h2>
-<p class="section__lede">
-Expressing interest takes a few minutes. Everything after that happens through
-Morrowfield's established communication process.
-</p>
-</header>
+    <!-- ========================== HOW IT WORKS ======================== -->
+    <section class="section" id="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-title">A straightforward process</h2>
+          <p class="section__lede">
+            Expressing interest takes a few minutes. Everything after that happens through
+            Morrowfield's established communication process.
+          </p>
+        </header>
 
-<ol class="steps">
-<li class="step">
-<h3>Explore the categories</h3>
-<p>Review the Small, Medium and Large amount ranges to see which category best matches your needs.</p>
-</li>
-<li class="step">
-<h3>Express your interest</h3>
-<p>Use any Express Interest button on this page to open the Morrowfield enquiry form.</p>
-</li>
-<li class="step">
-<h3>Complete the form</h3>
-<p>Share a few details and indicate which loan category you are interested in.</p>
-</li>
-<li class="step">
-<h3>Hear from Morrowfield</h3>
-<p>The team follows up through the contact method you choose in the form and continues the conversation.</p>
-</li>
-<li class="step">
-<h3>Continue the process</h3>
-<p>Any further assessment, proposed terms and formal offer are handled through the company's official process.</p>
-</li>
-</ol>
-</div>
-</section>
+        <ol class="steps">
+          <li class="step">
+            <h3>Explore the categories</h3>
+            <p>Review the Small, Medium and Large amount ranges to see which category best matches your needs.</p>
+          </li>
+          <li class="step">
+            <h3>Express your interest</h3>
+            <p>Use any Express Interest button on this page to open the Morrowfield enquiry form.</p>
+          </li>
+          <li class="step">
+            <h3>Complete the form</h3>
+            <p>Share a few details and indicate which loan category you are interested in.</p>
+          </li>
+          <li class="step">
+            <h3>Hear from Morrowfield</h3>
+            <p>The team follows up through the contact method you choose in the form and continues the conversation.</p>
+          </li>
+          <li class="step">
+            <h3>Continue the process</h3>
+            <p>Any further assessment, proposed terms and formal offer are handled through the company's official process.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-<!-- ======================= WHY MORROWFIELD ======================== -->
-<section class="section section--alt" id="why-morrowfield" aria-labelledby="why-title">
-<div class="container">
-<header class="section__head">
-<p class="eyebrow">Why Morrowfield</p>
-<h2 id="why-title">Principles that shape the process</h2>
-</header>
+    <!-- ======================= WHY MORROWFIELD ======================== -->
+    <section class="section section--alt" id="why-morrowfield" aria-labelledby="why-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Why Morrowfield</p>
+          <h2 id="why-title">Principles that shape the process</h2>
+        </header>
 
-<div class="principles">
-<div class="principle">
-<h3>Conversation first</h3>
-<p>
-Proposed terms are discussed with you directly through an approved communication
-channel before anything is confirmed.
-</p>
-</div>
-<div class="principle">
-<h3>Clarity at every step</h3>
-<p>
-Categories, ranges and next steps are set out plainly, so you always know where you
-are in the process.
-</p>
-</div>
-<div class="principle">
-<h3>Community-supported</h3>
-<p>
-Morrowfield's lending model brings together community support and company funding.
-</p>
-</div>
-</div>
-</div>
-</section>
+        <div class="principles">
+          <div class="principle">
+            <h3>Conversation first</h3>
+            <p>
+              Proposed terms are discussed with you directly through an approved communication
+              channel before anything is confirmed.
+            </p>
+          </div>
+          <div class="principle">
+            <h3>Clarity at every step</h3>
+            <p>
+              Categories, ranges and next steps are set out plainly, so you always know where you
+              are in the process.
+            </p>
+          </div>
+          <div class="principle">
+            <h3>Community-supported</h3>
+            <p>
+              Morrowfield's lending model brings together community support and company funding.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- ============================== FAQ ============================= -->
-<section class="section" id="faq" aria-labelledby="faq-title">
-<div class="container">
-<header class="section__head">
-<p class="eyebrow">Questions</p>
-<h2 id="faq-title">Frequently asked questions</h2>
-</header>
+    <!-- ============================== FAQ ============================= -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Questions</p>
+          <h2 id="faq-title">Frequently asked questions</h2>
+        </header>
 
-<div class="faq">
-<details>
-<summary>What loan categories are displayed?</summary>
-<div class="faq__answer">
-<p>
-Morrowfield displays three categories: Small ($1,000–$5,000), Medium
-($10,000–$20,000) and Large ($25,000–$100,000). These are indicative amount
-ranges, not guaranteed offers.
-</p>
-</div>
-</details>
+        <div class="faq">
+          <details>
+            <summary>What loan categories are displayed?</summary>
+            <div class="faq__answer">
+              <p>
+                Morrowfield displays three categories: Small ($1,000–$5,000), Medium
+                ($10,000–$20,000) and Large ($25,000–$100,000). These are indicative amount
+                ranges, not guaranteed offers.
+              </p>
+            </div>
+          </details>
 
-<details>
-<summary>How do I express interest?</summary>
-<div class="faq__answer">
-<p>
-Select any Express Interest button on this page. It opens the Morrowfield enquiry
-form, which you complete and submit.
-</p>
-</div>
-</details>
+          <details>
+            <summary>How do I express interest?</summary>
+            <div class="faq__answer">
+              <p>
+                Select any Express Interest button on this page. It opens the Morrowfield enquiry
+                form, which you complete and submit.
+              </p>
+            </div>
+          </details>
 
-<details>
-<summary>Does submitting the form guarantee approval?</summary>
-<div class="faq__answer">
-<p>
-No. Submitting the form is an expression of interest. It is not a loan application,
-an approval, an offer, or a commitment to lend, and it does not guarantee that
-funding will be available.
-</p>
-</div>
-</details>
+          <details>
+            <summary>Does submitting the form guarantee approval?</summary>
+            <div class="faq__answer">
+              <p>
+                No. Submitting the form is an expression of interest. It is not a loan application,
+                an approval, an offer, or a commitment to lend, and it does not guarantee that
+                funding will be available.
+              </p>
+            </div>
+          </details>
 
-<details>
-<summary>What happens after I submit the form?</summary>
-<div class="faq__answer">
-<p>
-Morrowfield follows up through the contact method you choose in the form — email or
-WhatsApp — and continues the conversation from there.
-</p>
-</div>
-</details>
+          <details>
+            <summary>What happens after I submit the form?</summary>
+            <div class="faq__answer">
+              <p>
+                Morrowfield follows up through the contact method you choose in the form — email or
+                WhatsApp — and continues the conversation from there.
+              </p>
+            </div>
+          </details>
 
-<details>
-<summary>Where can I obtain confirmed loan terms?</summary>
-<div class="faq__answer">
-<p>
-Interest rates, APR, fees, repayment periods, eligibility criteria and lending
-disclosures are confirmed through Morrowfield's official process. They are not
-published on this website.
-</p>
-</div>
-</details>
+          <details>
+            <summary>Where can I obtain confirmed loan terms?</summary>
+            <div class="faq__answer">
+              <p>
+                Interest rates, APR, fees, repayment periods, eligibility criteria and lending
+                disclosures are confirmed through Morrowfield's official process. They are not
+                published on this website.
+              </p>
+            </div>
+          </details>
 
-<details>
-<summary>Do the amounts shown constitute an offer?</summary>
-<div class="faq__answer">
-<p>
-No. The ranges describe categories only. Any offer would be made separately, in
-writing, after the official process.
-</p>
-</div>
-</details>
-</div>
-</div>
-</section>
+          <details>
+            <summary>Do the amounts shown constitute an offer?</summary>
+            <div class="faq__answer">
+              <p>
+                No. The ranges describe categories only. Any offer would be made separately, in
+                writing, after the official process.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
 
-<!-- ========================= FINAL CALL TO ACTION ================= -->
-<section class="cta-band" id="express-interest" aria-labelledby="cta-title">
-<div class="container cta-band__inner">
-<p class="eyebrow eyebrow--light">Express interest</p>
-<h2 id="cta-title">Start the conversation.</h2>
-<p>
-Tell us which loan category you are interested in. The enquiry form takes a few minutes,
-and Morrowfield will follow up through the contact method you choose.
-</p>
-<a class="btn btn--light" href="#express-interest" data-express-interest>Express Interest</a>
-<p class="cta-band__note">
-Submitting the form is an expression of interest. It is not a loan application, an
-approval, or a commitment to lend.
-</p>
-</div>
-</section>
+    <!-- ========================= FINAL CALL TO ACTION ================= -->
+    <section class="cta-band" id="express-interest" aria-labelledby="cta-title">
+      <div class="container cta-band__inner">
+        <p class="eyebrow eyebrow--light">Express interest</p>
+        <h2 id="cta-title">Start the conversation.</h2>
+        <p>
+          Tell us which loan category you are interested in. The enquiry form takes a few minutes,
+          and Morrowfield will follow up through the contact method you choose.
+        </p>
+        <a class="btn btn--light" href="#express-interest" data-express-interest>Express Interest</a>
+        <p class="cta-band__note">
+          Submitting the form is an expression of interest. It is not a loan application, an
+          approval, or a commitment to lend.
+        </p>
+      </div>
+    </section>
 
-</main>
+  </main>
 
-<!-- ============================= FOOTER ============================= -->
-<footer class="site-footer">
-<div class="container">
-<div class="footer__inner">
-<div class="footer__brand">
-<p class="footer__name">Morrowfield</p>
-<p class="footer__sub">Community Finance</p>
-</div>
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <p class="footer__name">Morrowfield</p>
+          <p class="footer__sub">Community Finance</p>
+        </div>
 
-<nav class="footer__nav" aria-label="Footer">
-<a href="#about">About</a>
-<a href="#loan-options">Loan Options</a>
-<a href="#how-it-works">How It Works</a>
-<a href="#faq">FAQ</a>
-<a href="#express-interest" data-express-interest>Express Interest</a>
-<!--
-LEGAL LINKS — add only when approved content AND an approved destination exist.
-Do not publish fabricated privacy policies, terms, disclosures or regulatory notices.
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="#about">About</a>
+          <a href="#loan-options">Loan Options</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#express-interest" data-express-interest>Express Interest</a>
+          <!--
+            LEGAL LINKS — add only when approved content AND an approved destination exist.
+            Do not publish fabricated privacy policies, terms, disclosures or regulatory notices.
 
-<a href="/privacy.html">Privacy Policy</a>
-<a href="/terms.html">Terms</a>
-<a href="/disclosures.html">Disclosures</a>
--->
-</nav>
-</div>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms</a>
+            <a href="/disclosures.html">Disclosures</a>
+          -->
+        </nav>
+      </div>
 
-<p class="footer__legal">
-Morrowfield Community Finance. Loan category amounts are indicative ranges only and do not
-constitute an offer, an approval, or a commitment to lend. Interest rates, APR, fees,
-repayment periods, eligibility criteria and lending disclosures are not published on this
-website; confirmed terms are provided through the official process.
-</p>
+      <p class="footer__legal">
+        Morrowfield Community Finance. Loan category amounts are indicative ranges only and do not
+        constitute an offer, an approval, or a commitment to lend. Interest rates, APR, fees,
+        repayment periods, eligibility criteria and lending disclosures are not published on this
+        website; confirmed terms are provided through the official process.
+      </p>
 
-<p class="footer__copy">&copy; <span id="year">2026</span> Morrowfield Community Finance. All rights reserved.</p>
-</div>
-</footer>
+      <p class="footer__copy">&copy; <span id="year">2026</span> Morrowfield Community Finance. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
-```
-
----
