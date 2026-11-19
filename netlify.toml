@@ -1,0 +1,27 @@
+# ==========================================================================
+# Morrowfield Community Finance — Netlify static deployment
+# No build step is required: the repository is a plain static site.
+# ==========================================================================
+
+[build]
+publish = "."
+
+# Response headers
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "SAMEORIGIN"
+Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Static assets
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=604800"
+
+# Custom 404
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 404
