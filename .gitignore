@@ -1,0 +1,34 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files (never commit credentials)
+.env
+.env.*
+!.env.example
+
+# Dependencies (not required by this static project)
+node_modules/
+
+# Build output (not used; site is deployed from source)
+dist/
+.output/
+.cache/
+.temp/
+
+# Netlify / Render local artefacts
+.netlify/
