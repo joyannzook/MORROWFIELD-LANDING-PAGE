@@ -1,6 +1,5 @@
 ---
 
-```
 # Morrowfield Community Finance — Landing Website
 
 A premium, single-page static marketing website for **Morrowfield Community Finance**.
