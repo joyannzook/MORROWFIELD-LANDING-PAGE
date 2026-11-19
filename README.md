@@ -1,57 +1,88 @@
-# Morrowfield Landing Website
+# Morrowfield Community Finance — Landing Website
 
-A separate, simplified, static one-page landing website for Morrowfield Community Finance.
+A premium, single-page static marketing website for **Morrowfield Community Finance**.
 
-## Project direction
+This project is independent of the full lending application ([`joyannzook/MORROWFIELD`](https://github.com/joyannzook/MORROWFIELD)). Do not modify that repository as part of this project.
 
-- Visual direction: Premium financial institution - elegant, minimal, spacious, navy and white.
-- Presentation: One-page responsive landing site.
-- Technology: Plain HTML, CSS, and lightweight JavaScript.
-- Deployment target: Netlify or Render as a static site.
-- This repository is separate from the existing Morrowfield lending application. The existing application must remain untouched.
+> **The website is the front door. Google Forms receives the enquiry. Activepieces processes it. Resend/Gmail and the connected WhatsApp service handle follow-up.** That separation is mandatory.
 
-## Enquiry and communication workflow
+## Architecture
 
-The website will use one enquiry route:
+- Plain HTML, CSS and lightweight vanilla JavaScript.
+- No build step, package manager, framework, backend, database or authentication.
+- Static hosting from the repository root on Netlify or Render.
+- One enquiry destination, configured in `assets/js/main.js`.
+- No third-party scripts, external fonts, analytics, or duplicated automation.
 
-1. A visitor selects Express Interest on the landing page.
-2. The button opens the project's Google Form.
-3. The visitor submits the form.
-4. The existing Activepieces automation receives and processes the submission.
-5. Activepieces sends the appropriate email through Resend/Gmail and WhatsApp message through the connected WhatsApp service.
+## Project structure
 
-The static website does not host a backend or duplicate the automation logic.
+```text
+.
+├── index.html
+├── assets/
+│   ├── css/styles.css
+│   ├── js/main.js
+│   └── images/.gitkeep
+├── netlify.toml
+├── render.yaml
+├── README.md
+└── .gitignore
+```
 
-## Website scope
+## Local preview
 
-The landing page will explain Morrowfield, present the approved loan categories, describe the high-level customer journey, and direct visitors to the enquiry form.
+```bash
+python3 -m http.server 8080
+```
 
-It is an informational and interest-capture website only. It must not imply that visitors can submit a formal loan application, obtain approval, reserve or hold funds, receive a disbursement, or manage repayments through this website.
+Then open http://localhost:8080.
 
-Do not collect Social Security numbers, bank credentials, identity documents, or other sensitive financial information through the interest form.
+## Enquiry configuration
 
-## Business facts to preserve
+Set the approved Google Form URL in the single `GOOGLE_FORM_URL` constant in `assets/js/main.js`. Until the operator supplies and verifies that URL, the placeholder must remain and the site is not integration-complete.
 
-- Working identity: Morrowfield Community Finance.
-- Intended jurisdiction: United States.
-- Currency: USD.
-- Small category: $1,000-$5,000.
-- Medium category: $10,000-$20,000.
-- Large category: $25,000-$100,000.
-- Loan duration, interest rates, APR, and fees are not approved. Do not invent or publish pricing terms.
-- Brand direction: navy, royal blue, white, and light grey.
+Do not add `mailto:`, `wa.me`, standalone email/WhatsApp triggers, a replacement form, a website backend, a submission database, or duplicated Activepieces logic.
 
-## Outstanding inputs
+## Approved indicative loan categories
 
-- Google Form URL.
-- Business email and WhatsApp details, if shown on the site.
-- Approved logo and brand assets, if available.
-- Approved company description and legal entity details.
-- Legal review of required privacy, terms, and lending disclosures.
-- Approved operating states and applicable licensing/compliance requirements.
+| Category | Indicative amount |
+|---|---:|
+| Small | $1,000–$5,000 |
+| Medium | $10,000–$20,000 |
+| Large | $25,000–$100,000 |
 
-Use clearly marked placeholders until details are confirmed. Do not invent company contact information or legal copy.
+These ranges are not offers, approvals, commitments to lend, or guarantees of eligibility, availability or funding. Do not invent rates, APR, fees, repayment terms, eligibility criteria, company registration, licensing, contact details, addresses, testimonials or legal claims.
 
-## Initial status
+## Status and outstanding approvals
 
-Repository created as a public GitHub repository with an initial README. The project handoff and verbatim conversation record will be maintained separately in the Google Sheet named Morrowfield landing website handoff.
+- [x] Static HTML, CSS and JavaScript source populated.
+- [x] Netlify and Render static hosting configuration supplied.
+- [ ] Google Form URL supplied and configured.
+- [ ] Existing Activepieces trigger verified with the operator.
+- [ ] Email and WhatsApp follow-up verified.
+- [ ] Privacy Policy, Terms and lending disclosures approved.
+- [ ] Production domain and live deployment verified.
+- [ ] Functional, responsive, accessibility and deployment QA completed.
+
+A successful local preview is not a successful deployment. A successful deployment is not a verified automation.
+
+## Deployment
+
+### Netlify
+- Connect this repository.
+- Leave the build command empty.
+- Publish directory: `.`.
+
+### Render
+- Create a Blueprint from `render.yaml`, or create a Static Site manually.
+- Leave the build command empty.
+- Publish directory: `.`.
+- Do not create a Web Service, database or background worker for this site.
+
+## Quality assurance
+
+Test navigation, mobile menu behaviour, FAQ details, all enquiry links, exact loan amounts, no-JavaScript usability, keyboard navigation, visible focus, reduced-motion behaviour, asset paths and responsive layouts at 360px, 390px, 768px, 1024px and 1440px. Confirm there are no `mailto:` or `wa.me` links and no invented legal or lending claims.
+
+## Project isolation
+
+This repository is `joyannzook/MORROWFIELD-LANDING-PAGE`. The full lending application repository `joyannzook/MORROWFIELD` must remain untouched.
