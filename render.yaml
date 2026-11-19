@@ -1,0 +1,24 @@
+# ==========================================================================
+# Morrowfield Community Finance — Render Blueprint (Static Site)
+# No build command and no backend service are required.
+# ==========================================================================
+
+services:
+- type: web
+name: morrowfield-landing-page
+runtime: static
+staticPublishPath: .
+pullRequestPreviewsEnabled: true
+headers:
+- path: /*
+name: X-Content-Type-Options
+value: nosniff
+- path: /*
+name: X-Frame-Options
+value: SAMEORIGIN
+- path: /*
+name: Referrer-Policy
+value: strict-origin-when-cross-origin
+- path: /assets/*
+name: Cache-Control
+value: public, max-age=604800
