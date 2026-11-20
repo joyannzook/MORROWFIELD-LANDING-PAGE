@@ -74,7 +74,7 @@ Any static file server works (`npx serve`, VS Code Live Server, etc.).
 
 The six-field form is embedded in `index.html` and submits directly to the approved Google Forms `formResponse` endpoint. The six HTML entry identifiers are mapped to the live form questions in the markup. No replacement form, backend, or database is introduced.
 
-When WhatsApp is selected as the preferred contact method, the website makes the WhatsApp number field required, displays an instruction, and blocks submission until a number is entered. When Email is selected, the WhatsApp field remains optional. This is website-side validation only; the Google Form itself is unchanged.
+The enquiry form starts collapsed behind a full-width “Tap to begin conversation” control. Express Interest links expand it automatically. The top control remains available to collapse the form, and the submit control remains at the bottom. Desktop and wide tablet use the approved two-column field order (Q1/Q4, Q2/Q5, Q3/Q6); mobile stacks Q1 through Q6 vertically. Custom validation marks every missing or invalid required field, displays an inline explanation, and scrolls/focuses the first invalid field. WhatsApp is required only when selected as the preferred contact method; its helper copy appears below the number input with reserved space to avoid layout shifts. This is website-side validation only; the Google Form itself is unchanged.
 
 Loan-card Express Interest links preselect their corresponding category. Other Express Interest links scroll to the form without preselecting a category.
 
@@ -165,7 +165,7 @@ Report each of these separately and only with evidence:
 3. Verify the existing Activepieces processing and any downstream email/WhatsApp outcomes separately.
 4. Record each result.
 
-The website-side WhatsApp requirement is conditional: WhatsApp selection requires a non-empty WhatsApp number; Email selection leaves that field optional. The Google Form configuration is not modified by this website validation.
+The website-side WhatsApp requirement is conditional: WhatsApp selection requires a non-empty WhatsApp number; Email selection leaves that field optional. All required fields receive inline validation feedback. The Google Form configuration is not modified by this website validation.
 
 Do **not** modify the existing Activepieces flow under this ticket.
 
@@ -211,3 +211,8 @@ The full lending application at `joyannzook/MORROWFIELD` must remain untouched.
 - **Verification remains pending:** confirm a live website submission is stored by Google Forms and retrievable through Activepieces.
 
 ---
+
+
+## Enquiry form UX update
+
+The form is initially collapsed, with a full-width disclosure control. The top control remains available while expanded; submission remains at the bottom. Wide layouts arrange fields as Q1/Q4, Q2/Q5 and Q3/Q6; narrow layouts stack Q1–Q6. Required-field errors are displayed inline and the first invalid field is brought into view and focused. Verify at 360px, 390px, 768px, 1024px and 1440px. A successful iframe navigation is not proof of Google Forms storage; confirm a test response through Activepieces with operator authorization.
