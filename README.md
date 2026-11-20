@@ -70,34 +70,15 @@ Any static file server works (`npx serve`, VS Code Live Server, etc.).
 
 ---
 
-## Configuration — the single enquiry route
+## Configuration — embedded Google Forms enquiry
 
-All enquiry traffic goes through **one** destination, defined in **one** place:
+The six-field form is embedded in `index.html` and submits directly to the approved Google Forms `formResponse` endpoint. The six HTML entry identifiers are mapped to the live form questions in the markup. No replacement form, backend, or database is introduced.
 
-`assets/js/main.js`
+When WhatsApp is selected as the preferred contact method, the website makes the WhatsApp number field required, displays an instruction, and blocks submission until a number is entered. When Email is selected, the WhatsApp field remains optional. This is website-side validation only; the Google Form itself is unchanged.
 
-```js
-var PLACEHOLDER = "REPLACE_WITH_GOOGLE_FORM_URL";
-var GOOGLE_FORM_URL = PLACEHOLDER;   // ← replace with the approved Google Form URL
-```
+Loan-card Express Interest links preselect their corresponding category. Other Express Interest links scroll to the form without preselecting a category.
 
-Every element marked `data-express-interest` is rewired from this constant.
-
-### Behaviour
-
-| `GOOGLE_FORM_URL` state | Result |
-|---|---|
-| Left as the placeholder | Links keep their in-page fallback (`#express-interest`) and a console warning is emitted. **Not production-ready.** |
-| Set to a valid `https://` URL | All Express Interest links open the form in a new tab with `rel="noopener noreferrer"` and an extended accessible label. |
-
-### Not permitted
-
-Do **not** add `mailto:` links, `wa.me` links, standalone email or WhatsApp
-buttons, direct-message triggers, a website backend, a submission database, a
-replacement Google Form, or duplicated Activepieces logic.
-
-There is exactly **one** enquiry route.
-
+Google Forms is cross-origin: the browser cannot inspect the iframe response to prove that Google stored the submission. The on-page status indicates that the browser submission completed; verify actual storage by retrieving the response through Activepieces.
 ---
 
 ## Deployment
@@ -179,15 +160,12 @@ Report each of these separately and only with evidence:
 
 ## Integration verification (requires operator input)
 
-Perform only when the approved Google Form URL is supplied:
+1. Submit a synthetic test enquiry through the deployed embedded form (requires operator authorization because it writes a real response).
+2. Retrieve the latest Google Forms response through Activepieces and compare all six fields.
+3. Verify the existing Activepieces processing and any downstream email/WhatsApp outcomes separately.
+4. Record each result.
 
-1. Confirm every Express Interest link opens the correct form.
-2. Complete and submit a test submission.
-3. Confirm with the operator that the existing Activepieces trigger received it.
-4. Confirm the existing flow processed it.
-5. Verify the email (Resend/Gmail) outcome.
-6. Verify the WhatsApp outcome, including consent and template requirements.
-7. Record each result.
+The website-side WhatsApp requirement is conditional: WhatsApp selection requires a non-empty WhatsApp number; Email selection leaves that field optional. The Google Form configuration is not modified by this website validation.
 
 Do **not** modify the existing Activepieces flow under this ticket.
 
