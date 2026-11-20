@@ -106,7 +106,7 @@
         submitting = false;
         submitButton.disabled = false;
         submitButton.textContent = "Submit Expression of Interest";
-        setStatus("Your submission has been sent to Google Forms. Morrowfield will follow up using your selected contact method.", "success");
+        setStatus("Your submission request has been sent. This page cannot independently confirm that Google Forms stored it. Morrowfield will follow up using your selected contact method.", "success");
         form.reset();
         updateWhatsAppRequirement();
       });
