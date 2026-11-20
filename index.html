@@ -367,7 +367,81 @@
           Tell us which loan category you are interested in. The enquiry form takes a few minutes,
           and Morrowfield will follow up through the contact method you choose.
         </p>
-        <a class="btn btn--light" href="#express-interest" data-express-interest>Express Interest</a>
+
+        <iframe
+          class="form-target"
+          name="morrowfield-form-target"
+          title="Morrowfield enquiry submission"
+          aria-hidden="true"
+          tabindex="-1"></iframe>
+
+        <form
+          class="interest-form"
+          id="morrowfield-interest-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfgun1ctkpUOw-xY9mYzZMeuyoYyEELf6BqQqqbeUYMQkKL3A/formResponse"
+          method="post"
+          target="morrowfield-form-target"
+          novalidate>
+          <div class="form-field">
+            <label for="interest-full-name">Full name <span aria-hidden="true">*</span></label>
+            <input id="interest-full-name" name="entry.1052835881" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="form-field">
+            <label for="interest-email">Email address <span aria-hidden="true">*</span></label>
+            <input id="interest-email" name="entry.2071601099" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="form-field">
+            <label for="interest-whatsapp">WhatsApp number</label>
+            <input id="interest-whatsapp" name="entry.77213406" type="tel" autocomplete="tel" />
+            <p class="form-field__hint" id="whatsapp-required-message" hidden>
+              WhatsApp is your selected contact method. Enter your WhatsApp number above to continue.
+            </p>
+          </div>
+
+          <fieldset class="form-field form-field--choice">
+            <legend>Which loan category are you interested in? <span aria-hidden="true">*</span></legend>
+            <label class="choice-option">
+              <input type="radio" name="entry.1754856868" value="Small Loan — $1,000–$5,000" required />
+              <span>Small Loan — $1,000–$5,000</span>
+            </label>
+            <label class="choice-option">
+              <input type="radio" name="entry.1754856868" value="Medium Loan — $10,000–$20,000" />
+              <span>Medium Loan — $10,000–$20,000</span>
+            </label>
+            <label class="choice-option">
+              <input type="radio" name="entry.1754856868" value="Large Loan — $25,000–$100,000" />
+              <span>Large Loan — $25,000–$100,000</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-field form-field--choice">
+            <legend>How would you prefer us to contact you? <span aria-hidden="true">*</span></legend>
+            <label class="choice-option">
+              <input type="radio" name="entry.1289286055" value="Email" required />
+              <span>Email</span>
+            </label>
+            <label class="choice-option">
+              <input type="radio" name="entry.1289286055" value="WhatsApp" />
+              <span>WhatsApp</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-field form-field--choice form-consent">
+            <legend>Consent <span aria-hidden="true">*</span></legend>
+            <label class="choice-option">
+              <input type="radio" name="entry.375428151" value="I Agree" required />
+              <span>I Agree</span>
+            </label>
+          </fieldset>
+
+          <p class="form-status" id="interest-form-status" role="status" aria-live="polite"></p>
+          <button class="btn btn--light interest-form__submit" id="interest-form-submit" type="submit">
+            Submit Expression of Interest
+          </button>
+        </form>
+
         <p class="cta-band__note">
           Submitting the form is an expression of interest. It is not a loan application, an
           approval, or a commitment to lend.
