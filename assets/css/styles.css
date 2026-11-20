@@ -1016,3 +1016,9 @@ ol {
   .interest-form__submit { grid-column: 1; }
   .interest-form__submit { width: 100%; }
 }
+
+.form-field__conditional {
+  color: var(--muted) !important;
+  font-size: 0.78rem;
+  font-weight: 400;
+}
