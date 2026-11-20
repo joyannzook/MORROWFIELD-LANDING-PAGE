@@ -24,8 +24,8 @@ application.
 | Accessibility features (semantic HTML, keyboard, focus, contrast) | ⚠️ Implemented in source; manual verification pending |
 | Netlify configuration supplied | ✅ |
 | Render configuration supplied | ✅ |
-| Google Form URL configured | ❌ **Blocker** — placeholder in `assets/js/main.js` |
-| Activepieces trigger verified with operator | ❌ **Blocker** — external, not part of this repo |
+| Embedded Google Forms enquiry form | ✅ Implemented in source; live submission verification pending |
+| Activepieces response retrieval | ⚠️ Connection and existing test response confirmed; new website submission verification pending |
 | Email / WhatsApp follow-up verified | ❌ **Blocker** — external, not part of this repo |
 | Privacy / Terms / Disclosures pages | ❌ **Awaiting approved content** |
 | Live deployment verified | ❌ Pending hosting account connection |
@@ -140,7 +140,7 @@ Report each of these separately and only with evidence:
 - [ ] Header and footer navigation reach the correct sections
 - [ ] Mobile menu opens, closes, and closes on link selection
 - [ ] Mobile menu closes on `Escape` and returns focus to the toggle
-- [ ] Every Express Interest link resolves to the configured Google Form
+- [ ] Every Express Interest link scrolls to the embedded form\n- [ ] Selecting WhatsApp makes the WhatsApp number mandatory and blocks submission when blank\n- [ ] Selecting Email leaves WhatsApp optional\n- [ ] Loan-card links preselect the matching loan category\n- [ ] A test website submission is confirmed in Google Forms through Activepieces
 - [ ] Every loan amount is exactly correct
 - [ ] FAQ items open and close
 - [ ] No `mailto:` or `wa.me` link exists anywhere in the source
@@ -197,7 +197,7 @@ Do **not** modify the existing Activepieces flow under this ticket.
 
 | Blocker | Owner | Notes |
 |---|---|---|
-| Google Form URL | Operator | Set `GOOGLE_FORM_URL` in `assets/js/main.js` |
+| Live form submission verification | Operator | Submit a test through the deployed page and confirm the stored response through Activepieces |
 | Activepieces trigger confirmation | Operator | External system; verify separately |
 | Email / WhatsApp delivery verification | Operator | External systems |
 | Privacy Policy content | Operator / legal | Add to footer only when approved |
@@ -225,11 +225,11 @@ The full lending application at `joyannzook/MORROWFIELD` must remain untouched.
 
 ### Build notes for whoever commits this
 
-- **One enquiry route only.** Every CTA carries `data-express-interest` and is rewired from the single `GOOGLE_FORM_URL` constant. No `mailto:`, no `wa.me`, no backend, no form duplication.
+- **One enquiry route only.** Every CTA scrolls to the embedded six-field Google Form. No `mailto:`, no `wa.me`, no backend, no replacement form.\n- **Conditional WhatsApp validation.** Choosing WhatsApp makes the WhatsApp number mandatory on the website; choosing Email leaves it optional. The live Google Form is unchanged.
 - **No-JS resilience.** Navigation has a `<noscript>` fallback; FAQ uses native `<details>`; the site is fully readable and navigable without JavaScript.
 - **No external requests.** System font stacks only — no Google Fonts, no third-party scripts, no analytics.
 - **Design tokens** live at the top of `styles.css`; the gold is used strictly as a decorative hairline/accent, never as text.
 - **Amount strings** are exact and use en dashes: `$1,000–$5,000`, `$10,000–$20,000`, `$25,000–$100,000`.
-- **Two blockers remain** before this can be called integration-complete: the Google Form URL and operator confirmation of the Activepieces trigger.
+- **Verification remains pending:** confirm a live website submission is stored by Google Forms and retrievable through Activepieces.
 
 ---
