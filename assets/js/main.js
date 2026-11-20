@@ -6,7 +6,7 @@
     var form=document.getElementById("morrowfield-interest-form"), toggle=document.getElementById("interest-form-toggle");
     if(!form||!toggle)return;
     var whatsapp=document.getElementById("interest-whatsapp"), hint=document.getElementById("whatsapp-required-message");
-    var status=document.getElementById("interest-form-status"), submit=document.getElementById("interest-form-submit");
+    var status=document.getElementById("interest-form-status"), submit=document.getElementById("interest-form-submit"), clearButton=document.getElementById("interest-form-clear");
     var target=document.querySelector('iframe[name="morrowfield-form-target"]');
     var submitting=false, awaitingLoad=false, timer=null;
     function selected(name){return form.querySelector('input[name="'+name+'"]:checked');}
@@ -29,13 +29,32 @@
       whatsapp.required=required;whatsapp.setAttribute("aria-required",String(required));hint.hidden=!required;
       if(!required||whatsapp.value.trim())clearError(whatsapp.closest(".form-field"),document.getElementById("interest-whatsapp-error"));
     }
+    function resetFormState(clearStatus){
+      if(timer)window.clearTimeout(timer);
+      timer=null;submitting=false;awaitingLoad=false;
+      form.reset();
+      form.querySelectorAll(".form-field").forEach(function(field){
+        var error=field.querySelector(".form-field__error");
+        if(error)clearError(field,error);
+      });
+      submit.disabled=false;
+      submit.textContent="Submit Expression of Interest";
+      submit.classList.remove("has-validation-error");
+      if(clearStatus)setStatus("","");
+      updateWhatsApp();
+    }
+    if(clearButton)clearButton.addEventListener("click",function(){
+      resetFormState(true);
+      expand(true,false);
+      document.getElementById("interest-full-name").focus();
+    });
     function validate(){
       updateWhatsApp();var invalid=[];
       var name=document.getElementById("interest-full-name"),email=document.getElementById("interest-email");
       [
-        {el:name,id:"interest-full-name-error",ok:name.value.trim().length>0,msg:"Please enter your full name."},
-        {el:email,id:"interest-email-error",ok:email.value.trim().length>0&&email.validity.valid,msg:email.value.trim()?"Please enter a valid email address.":"Please enter your email address."},
-        {el:whatsapp,id:"interest-whatsapp-error",ok:!whatsapp.required||whatsapp.value.trim().length>0,msg:"Please enter your WhatsApp number because you selected WhatsApp as your contact method."}
+        {el:name,id:"interest-full-name-error",ok:name.value.trim().length>0,msg:"Please enter your full name"},
+        {el:email,id:"interest-email-error",ok:email.value.trim().length>0&&email.validity.valid,msg:email.value.trim()?"Please enter a valid email address":"Please enter your email address"},
+        {el:whatsapp,id:"interest-whatsapp-error",ok:!whatsapp.required||whatsapp.value.trim().length>0,msg:"A WhatsApp number is required because you selected WhatsApp."}
       ].forEach(function(item){
         var field=item.el.closest(".form-field"),error=document.getElementById(item.id);
         if(item.ok)clearError(field,error);else{showError(field,error,item.msg);invalid.push({field:field,control:item.el});}
@@ -72,9 +91,7 @@
       awaitingLoad=false;window.clearTimeout(timer);submitting=false;submit.disabled=false;
       submit.textContent="Submit Expression of Interest";
       setStatus("Your submission request has been sent. This page cannot independently confirm that Google Forms stored it. Morrowfield will follow up using your selected contact method.","success");
-      form.reset();
-      form.querySelectorAll(".form-field").forEach(function(field){var error=field.querySelector(".form-field__error");if(error)clearError(field,error);});
-      updateWhatsApp();
+      resetFormState(false);
     });
     form.addEventListener("submit",function(event){
       event.preventDefault();if(submitting||!validate())return;
@@ -87,7 +104,8 @@
       },15000);
       HTMLFormElement.prototype.submit.call(form);
     });
-    updateWhatsApp();
+    resetFormState(true);
+    window.addEventListener("pageshow",function(){resetFormState(true);expand(false,false);});
   }
   function configureEnquiryLinks(){
     document.querySelectorAll("[data-express-interest]").forEach(function(link){
