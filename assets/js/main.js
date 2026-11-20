@@ -1,65 +1,137 @@
 /* ==========================================================================
    Morrowfield Community Finance — Landing Website
-   Lightweight progressive enhancement only.
-   The website must remain usable if this file fails to load.
+   Progressive enhancement and Google Forms enquiry submission.
    ========================================================================== */
 
 (function () {
   "use strict";
 
-  /* ------------------------------------------------------------------
-     CONFIGURATION — SINGLE SOURCE OF TRUTH
-     ------------------------------------------------------------------
-     Replace the placeholder below with the approved Google Form URL.
-
-     Example:
-       var GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/FORM_ID/viewform";
-
-     This is the ONLY place the enquiry destination is defined. Every
-     "Express Interest" link on the page is wired from this value.
-
-     If this value is left unconfigured, the links keep their in-page
-     fallback and a console warning is emitted. The site is NOT to be
-     declared integration-complete until this is set and verified.
-     ------------------------------------------------------------------ */
-  var PLACEHOLDER = "REPLACE_WITH_GOOGLE_FORM_URL";
-  var GOOGLE_FORM_URL = PLACEHOLDER;
-
   var MOBILE_BREAKPOINT = window.matchMedia("(min-width: 901px)");
 
   /* ------------------------------------------------------------------
-     Enquiry links
+     Express Interest navigation
      ------------------------------------------------------------------ */
-  function isConfigured(url) {
-    return (
-      typeof url === "string" &&
-      url !== PLACEHOLDER &&
-      url.length > 0 &&
-      /^https:\/\//i.test(url)
-    );
-  }
-
   function configureEnquiryLinks() {
     var links = document.querySelectorAll("[data-express-interest]");
 
-    if (!isConfigured(GOOGLE_FORM_URL)) {
-      if (window.console && console.warn) {
-        console.warn(
-          "[Morrowfield] GOOGLE_FORM_URL is not configured. " +
-          "Express Interest links remain at their in-page fallback. " +
-          "See README → Integration blockers."
+    Array.prototype.forEach.call(links, function (link) {
+      link.setAttribute("href", "#express-interest");
+      link.removeAttribute("target");
+      link.removeAttribute("rel");
+      link.addEventListener("click", function () {
+        var category = link.getAttribute("data-loan-category");
+        if (!category) return;
+
+        var options = document.querySelectorAll(
+          'input[name="entry.1754856868"]'
         );
-      }
-      return;
+        Array.prototype.forEach.call(options, function (option) {
+          option.checked = option.value === category;
+        });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Enquiry form
+     ------------------------------------------------------------------ */
+  function initInterestForm() {
+    var form = document.getElementById("morrowfield-interest-form");
+    if (!form) return;
+
+    var whatsappInput = document.getElementById("interest-whatsapp");
+    var whatsappMessage = document.getElementById("whatsapp-required-message");
+    var status = document.getElementById("interest-form-status");
+    var submitButton = document.getElementById("interest-form-submit");
+    var target = document.querySelector('iframe[name="morrowfield-form-target"]');
+    var contactOptions = form.querySelectorAll('input[name="entry.1289286055"]');
+    var submitting = false;
+    var submissionTimer = null;
+    var awaitingFrameLoad = false;
+
+    function selectedContactMethod() {
+      var selected = form.querySelector('input[name="entry.1289286055"]:checked');
+      return selected ? selected.value : "";
     }
 
-    Array.prototype.forEach.call(links, function (link) {
-      var label = link.getAttribute("aria-label") || link.textContent.trim();
+    function updateWhatsAppRequirement() {
+      var whatsappSelected = selectedContactMethod() === "WhatsApp";
+      whatsappInput.required = whatsappSelected;
+      whatsappMessage.hidden = !whatsappSelected;
+      whatsappInput.setAttribute("aria-required", String(whatsappSelected));
+      if (whatsappSelected && !whatsappInput.value.trim()) {
+        whatsappInput.setAttribute("aria-describedby", "whatsapp-required-message");
+      } else {
+        whatsappInput.removeAttribute("aria-describedby");
+      }
+    }
 
-      link.setAttribute("href", GOOGLE_FORM_URL);
-      link.setAttribute("target", "_blank");
-      link.setAttribute("rel", "noopener noreferrer");
-      link.setAttribute("aria-label", label + " (opens the enquiry form in a new tab)");
+    Array.prototype.forEach.call(contactOptions, function (option) {
+      option.addEventListener("change", updateWhatsAppRequirement);
+    });
+    updateWhatsAppRequirement();
+
+    function setStatus(message, kind) {
+      status.textContent = message;
+      status.className = "form-status" + (kind ? " form-status--" + kind : "");
+    }
+
+    function validateForm() {
+      updateWhatsAppRequirement();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        if (selectedContactMethod() === "WhatsApp" && !whatsappInput.value.trim()) {
+          setStatus("Please enter your WhatsApp number because WhatsApp is your selected contact method.", "error");
+          whatsappInput.focus();
+        } else {
+          setStatus("Please complete all required fields before submitting.", "error");
+        }
+        return false;
+      }
+
+      if (selectedContactMethod() === "WhatsApp" && !whatsappInput.value.trim()) {
+        setStatus("Please enter your WhatsApp number because WhatsApp is your selected contact method.", "error");
+        whatsappInput.focus();
+        return false;
+      }
+      return true;
+    }
+
+    if (target) {
+      target.addEventListener("load", function () {
+        if (!awaitingFrameLoad || !submitting) return;
+        awaitingFrameLoad = false;
+        window.clearTimeout(submissionTimer);
+        submitting = false;
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Expression of Interest";
+        setStatus("Your submission has been sent to Google Forms. Morrowfield will follow up using your selected contact method.", "success");
+        form.reset();
+        updateWhatsAppRequirement();
+      });
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (submitting || !validateForm()) return;
+
+      submitting = true;
+      awaitingFrameLoad = true;
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting…";
+      setStatus("Submitting your expression of interest…", "pending");
+
+      submissionTimer = window.setTimeout(function () {
+        if (!submitting) return;
+        submitting = false;
+        awaitingFrameLoad = false;
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Expression of Interest";
+        setStatus("We could not confirm the submission in this browser. Please try again. If the problem continues, contact Morrowfield through an approved channel.", "error");
+      }, 15000);
+
+      HTMLFormElement.prototype.submit.call(form);
     });
   }
 
@@ -122,11 +194,9 @@
     if (currentYear > 0) yearEl.textContent = String(currentYear);
   }
 
-  /* ------------------------------------------------------------------
-     Initialise
-     ------------------------------------------------------------------ */
   function init() {
     configureEnquiryLinks();
+    initInterestForm();
     initNavigation();
     initYear();
   }
