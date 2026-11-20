@@ -375,8 +375,11 @@
           aria-hidden="true"
           tabindex="-1"></iframe>
 
+        <button class="interest-form__toggle" id="interest-form-toggle" type="button" aria-expanded="false" aria-controls="morrowfield-interest-form"><span>Tap to begin conversation</span><span class="interest-form__chevron" aria-hidden="true"></span></button>
+
         <form
           class="interest-form"
+          hidden
           id="morrowfield-interest-form"
           action="https://docs.google.com/forms/d/e/1FAIpQLSfgun1ctkpUOw-xY9mYzZMeuyoYyEELf6BqQqqbeUYMQkKL3A/formResponse"
           method="post"
@@ -385,19 +388,20 @@
           <div class="form-field">
             <label for="interest-full-name">Full name <span aria-hidden="true">*</span></label>
             <input id="interest-full-name" name="entry.1052835881" type="text" autocomplete="name" required />
+            <p class="form-field__error" id="interest-full-name-error" hidden></p>
           </div>
 
           <div class="form-field">
             <label for="interest-email">Email address <span aria-hidden="true">*</span></label>
             <input id="interest-email" name="entry.2071601099" type="email" autocomplete="email" required />
+            <p class="form-field__error" id="interest-email-error" hidden></p>
           </div>
 
           <div class="form-field">
-            <label for="interest-whatsapp">WhatsApp number <span class="form-field__conditional">(required if WhatsApp is selected)</span></label>
-            <input id="interest-whatsapp" name="entry.77213406" type="tel" autocomplete="tel" />
-            <p class="form-field__hint" id="whatsapp-required-message" hidden>
-              WhatsApp is your selected contact method. Enter your WhatsApp number above to continue.
-            </p>
+            <label for="interest-whatsapp">WhatsApp number</label>
+            <input id="interest-whatsapp" name="entry.77213406" type="tel" autocomplete="tel" aria-describedby="whatsapp-required-message" />
+            <p class="form-field__hint" id="whatsapp-required-message" aria-live="polite">Required when WhatsApp is your preferred contact method.</p>
+            <p class="form-field__error" id="interest-whatsapp-error" hidden></p>
           </div>
 
           <fieldset class="form-field form-field--choice">
@@ -414,6 +418,7 @@
               <input type="radio" name="entry.1754856868" value="Large Loan — $25,000–$100,000" />
               <span>Large Loan — $25,000–$100,000</span>
             </label>
+            <p class="form-field__error" id="interest-loan-error" hidden></p>
           </fieldset>
 
           <fieldset class="form-field form-field--choice">
@@ -426,6 +431,7 @@
               <input type="radio" name="entry.1289286055" value="WhatsApp" />
               <span>WhatsApp</span>
             </label>
+            <p class="form-field__error" id="interest-contact-error" hidden></p>
           </fieldset>
 
           <fieldset class="form-field form-field--choice form-consent">
@@ -434,6 +440,7 @@
               <input type="radio" name="entry.375428151" value="I Agree" required />
               <span>I Agree</span>
             </label>
+            <p class="form-field__error" id="interest-consent-error" hidden></p>
           </fieldset>
 
           <p class="form-status" id="interest-form-status" role="status" aria-live="polite"></p>
