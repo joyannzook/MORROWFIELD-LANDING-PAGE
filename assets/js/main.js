@@ -7,8 +7,11 @@
     if(!form||!toggle)return;
     var whatsapp=document.getElementById("interest-whatsapp"), hint=document.getElementById("whatsapp-required-message");
     var status=document.getElementById("interest-form-status"), submit=document.getElementById("interest-form-submit"), clearButton=document.getElementById("interest-form-clear");
-    var target=document.querySelector('iframe[name="morrowfield-form-target"]');
-    var submitting=false, awaitingLoad=false, timer=null;
+    var confirmationDialog=document.getElementById("submission-confirmation");
+    var confirmationMessage=document.getElementById("submission-confirmation-message");
+    var confirmationReminder=document.getElementById("submission-confirmation-reminder");
+    var confirmationClose=document.getElementById("submission-confirmation-close");
+    var submitting=false;
     function selected(name){return form.querySelector('input[name="'+name+'"]:checked');}
     function setStatus(message,kind){status.textContent=message;status.className="form-status"+(kind?" form-status--"+kind:"");}
     function clearError(field,error){
@@ -30,8 +33,7 @@
       if(!required||whatsapp.value.trim())clearError(whatsapp.closest(".form-field"),document.getElementById("interest-whatsapp-error"));
     }
     function resetFormState(clearStatus){
-      if(timer)window.clearTimeout(timer);
-      timer=null;submitting=false;awaitingLoad=false;
+      submitting=false;
       form.reset();
       form.querySelectorAll(".form-field").forEach(function(field){
         var error=field.querySelector(".form-field__error");
@@ -86,23 +88,41 @@
       var field=event.target.closest(".form-field"),error=field&&field.querySelector(".form-field__error");
       if(error&&selected(event.target.name))clearError(field,error);
     });
-    if(target)target.addEventListener("load",function(){
-      if(!awaitingLoad||!submitting)return;
-      awaitingLoad=false;window.clearTimeout(timer);submitting=false;submit.disabled=false;
-      submit.textContent="Submit Expression of Interest";
-      setStatus("Your submission request has been sent. This page cannot independently confirm that Google Forms stored it. Morrowfield will follow up using your selected contact method.","success");
-      resetFormState(false);
-    });
+    if(confirmationClose&&confirmationDialog){
+      confirmationClose.addEventListener("click",function(){confirmationDialog.close();});
+      confirmationDialog.addEventListener("close",function(){
+        resetFormState(true);
+        expand(false,false);
+        toggle.focus();
+      });
+    }
     form.addEventListener("submit",function(event){
       event.preventDefault();if(submitting||!validate())return;
-      submitting=true;awaitingLoad=true;submit.disabled=true;submit.textContent="Submitting…";
-      setStatus("Submitting your expression of interest…","pending");
-      timer=window.setTimeout(function(){
-        if(!submitting)return;submitting=false;awaitingLoad=false;submit.disabled=false;
-        submit.textContent="Submit Expression of Interest";
-        setStatus("We could not confirm the submission in this browser. Please try again. If the problem continues, contact Morrowfield through an approved channel.","error");
-      },15000);
-      HTMLFormElement.prototype.submit.call(form);
+      submitting=true;submit.disabled=true;submit.textContent="Sending…";
+      setStatus("Sending your expression of interest…","pending");
+      var contact=selected("entry.1289286055");
+      var prefersWhatsApp=Boolean(contact&&contact.value==="WhatsApp");
+      try{
+        HTMLFormElement.prototype.submit.call(form);
+        setStatus("Your enquiry form has been sent from this page.","success");
+        if(confirmationMessage)confirmationMessage.textContent="Your browser has sent your enquiry form to Google Forms.";
+        if(confirmationReminder){
+          confirmationReminder.textContent=prefersWhatsApp
+            ?"You selected WhatsApp. Please keep the number you provided available for Morrowfield's follow-up."
+            :"Please check the email address you provided, including your Inbox and Spam/Junk folders, for Morrowfield's welcome message. Email providers may place legitimate messages in Spam/Junk.";
+        }
+        if(confirmationDialog&&typeof confirmationDialog.showModal==="function"){
+          confirmationDialog.showModal();
+        }else{
+          window.alert("Thank you! Your interest form has been sent. "+(prefersWhatsApp
+            ?"Please keep your WhatsApp available for Morrowfield's follow-up."
+            :"Please check your email Inbox and Spam/Junk folders for Morrowfield's welcome message."));
+          resetFormState(true);expand(false,false);
+        }
+      }catch(error){
+        submitting=false;submit.disabled=false;submit.textContent="Submit Expression of Interest";
+        setStatus("We could not send the form from this page. Please try again.","error");
+      }
     });
     resetFormState(true);
     window.addEventListener("pageshow",function(){resetFormState(true);expand(false,false);});
