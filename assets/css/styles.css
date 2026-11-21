@@ -1066,3 +1066,68 @@ ol {
 .interest-form__clear:hover { background: #EEF2F7; border-color: #8C969F; }
 .interest-form__clear:focus-visible { outline: 3px solid #D9BD7D; outline-offset: 3px; }
 @media (max-width: 600px) { .interest-form__clear { width: 100%; } }
+
+
+/* Submission acknowledgement dialog */
+.submission-dialog {
+  width: min(100% - 2rem, 34rem);
+  max-width: 34rem;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: #FFFFFF;
+  color: var(--body);
+  box-shadow: 0 24px 70px rgba(5, 15, 31, 0.3);
+}
+.submission-dialog::backdrop {
+  background: rgba(5, 15, 31, 0.72);
+  backdrop-filter: blur(3px);
+}
+.submission-dialog__inner {
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  text-align: left;
+}
+.submission-dialog__eyebrow {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.submission-dialog__title {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 4vw, 2.1rem);
+  line-height: 1.2;
+}
+.submission-dialog__message {
+  margin-top: 1rem;
+  color: var(--body);
+}
+.submission-dialog__reminder {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-left: 3px solid var(--gold);
+  background: var(--paper-alt);
+  color: var(--ink);
+  font-size: .94rem;
+}
+.submission-dialog__note {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: .76rem;
+  line-height: 1.5;
+}
+.submission-dialog__close {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 1.4rem;
+  border: 1px solid var(--navy-900);
+  background: var(--navy-900);
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.submission-dialog__close:hover {
+  background: var(--navy-800);
+}
